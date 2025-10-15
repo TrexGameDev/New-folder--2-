@@ -1,18 +1,37 @@
-import pygame as py
 
-py.init()
-screen = py.display.set_mode((500,500))
-py.display.set_caption("Pixel Rush")
-clock = py.time.Clock()
+import pygame
 
-
+pygame.init()
+screen = pygame.display.set_mode((1280, 720))
+clock = pygame.time.Clock()
 running = True
+dt = 0
+player = pygame.image.load("WeedMan.png")
+player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+
 while running:
-    for event in py.event.get():
-        if event.type == py.QUIT:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
             running = False
 
+    screen.fill("darkgreen")
+
+    
+    screen.blit(player,player_pos)
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_w]:
+        player_pos.y -= 300 * dt
+    if keys[pygame.K_s]:
+        player_pos.y += 300 * dt
+    if keys[pygame.K_a]:
+        player_pos.x -= 300 * dt
+    if keys[pygame.K_d]:
+        player_pos.x += 300 * dt
+
+ 
+    pygame.display.flip()
 
 
-    py.display.flip()
-    clock.tick(60)
+    dt = clock.tick(60) / 1000
+
+pygame.quit()
