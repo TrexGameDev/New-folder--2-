@@ -28,7 +28,8 @@ while running:
     if keys[pygame.K_d]:
         player_pos.x += 300 * dt
 
- 
+def Ground():
+    pass
     pygame.display.flip()
 
 
