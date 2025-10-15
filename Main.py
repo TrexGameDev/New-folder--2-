@@ -8,7 +8,7 @@ running = True
 dt = 0
 player = pygame.image.load("WeedMan.png")
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
-
+player_speed = 200
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -20,16 +20,15 @@ while running:
     screen.blit(player,player_pos)
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]:
-        player_pos.y -= 300 * dt
+        player_pos.y -= player_speed * dt
     if keys[pygame.K_s]:
-        player_pos.y += 300 * dt
+        player_pos.y += player_speed * dt
     if keys[pygame.K_a]:
-        player_pos.x -= 300 * dt
+        player_pos.x -= player_speed * dt
     if keys[pygame.K_d]:
-        player_pos.x += 300 * dt
+        player_pos.x += player_speed * dt
 
-def Ground():
-    pass
+
     pygame.display.flip()
 
 
